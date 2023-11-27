@@ -159,6 +159,16 @@ public:
         return (dRec.measure == ESolidAngle) ? warp::squareToUniformConePdf(m_cosCutoffAngle) : 0.0f;
     }
 
+    // Point2 sampleDirectionInv(const DirectionSamplingRecord &dRec, const PositionSamplingRecord &pRec) const {
+	// 	Vector local = Frame(pRec.n).toLocal(dRec.d);
+    //     return warp::uniformConeToSquare(local);
+	// }
+
+	// Point2 samplePositionInv(const PositionSamplingRecord &pRec) const {
+	// 	const Transform &trafo = m_worldTransform->eval(pRec.time);
+    //     return trafo.transformAffine(Point(0.0f));
+	// }
+
     Spectrum evalDirection(const DirectionSamplingRecord &dRec,
             const PositionSamplingRecord &pRec) const {
         const Transform &trafo = m_worldTransform->eval(pRec.time);

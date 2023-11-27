@@ -169,6 +169,13 @@ public:
     }
 
     /**
+	 * \brief Performs the inverse of the adjustment performed by \ref sampleReuse()
+	 */
+	inline Float sampleReuseInv(size_t idx, Float val) const {
+		return val * (m_cdf[idx + 1] - m_cdf[idx]) + m_cdf[idx];
+	}
+
+    /**
      * \brief %Transform a uniformly distributed sample.
      *
      * The original sample is value adjusted so that it can be "reused".

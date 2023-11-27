@@ -23,7 +23,7 @@ If you're running Ubuntu, you can install the required prerequisites using `inst
 
 With the prerequisites installed, the code can be compiled on Linux using SCons: (append `-jX` for parallel compilation, e.g. `-j8`)
 
-    scons --cfg=build/config-linux-gcc.py
+    scons --cfg=build/config-linux-gcc.py -j48
 
 We have merged and extended the patch for Python 3 compatibility, so that recent versions of SCons should work as well.
 Let us know if any changes to the configuration files are necessary for other operating systems.

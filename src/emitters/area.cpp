@@ -116,11 +116,20 @@ public:
             PositionSamplingRecord &pRec,
             const Point2 &sample, const Point2 *extra) const {
         Vector local = warp::squareToCosineHemisphere(sample);
-        dRec.d = Frame(pRec.n).toWorld(local);
+    dRec.d = Frame(pRec.n).toWorld(local);
         dRec.pdf = warp::squareToCosineHemispherePdf(local);
         dRec.measure = ESolidAngle;
         return Spectrum(1.0f);
     }
+
+    Point2 sampleDirectionInv(const DirectionSamplingRecord &dRec, const PositionSamplingRecord &pRec) const {
+		Vector local = Frame(pRec.n).toLocal(dRec.d);
+		return warp::cosineHemisphereToSquare(local);
+	}
+
+	Point2 samplePositionInv(const PositionSamplingRecord &pRec) const {
+		return m_shape->samplePositionInv(pRec);
+	}
 
     Spectrum evalDirection(const DirectionSamplingRecord &dRec,
             const PositionSamplingRecord &pRec) const {
